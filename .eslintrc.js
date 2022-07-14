@@ -17,9 +17,32 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
-    '@typescript-eslint/interface-name-prefix': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        'selector': 'interface',
+        'format': ['PascalCase'],
+        'custom': {
+          'regex': '^I[A-Z]',
+          'match': true,
+        },
+      },
+    ],
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        'default': 'array-simple',
+      },
+    ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-explicit-any': [
+      'error',
+      {
+        'fixToUnknown': false,
+        'ignoreRestArgs': false,
+      },
+    ],
+    '@typescript-eslint/no-unsafe-assignment': 'error',
+    '@typescript-eslint/non-nullable-type-assertion-style': 'warn',
   },
 };
